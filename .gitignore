@@ -1,0 +1,37 @@
+#include <stdio.h>
+int myArray(int [],int);
+int main()
+{
+    int a[10]={2,5,7,9,12,15,30,40,71,90};
+    int aranan=90,sayi;
+    sayi=myArray(a,aranan);
+    if(sayi==-1)
+    printf("sayi bulunamadi");
+    else
+     printf("bulunan: %d",sayi);
+    
+}
+int myArray(int array[],int aranan){
+int count=0;
+int eb=10;
+    int ek=-1;
+    int bayrak=0;
+    while(eb-ek){
+        count++;
+        int bakilan=(eb+ek)/2;
+        if(a[bakilan]==aranan){
+            bayrak=1;
+          return bakilan;
+        }
+        else if(a[bakilan]<aranan){
+            ek=bakilan;
+        }
+        else{
+            eb=bakilan;
+        }
+    }
+    if(bayrak==0){
+        return -1;
+    }
+printf("%d kez donguye girdi",count);
+}
