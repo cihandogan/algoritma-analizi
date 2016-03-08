@@ -1,0 +1,65 @@
+package AlgoritmaAnaliz;
+
+import java.util.Scanner;
+import java.util.Timer;
+
+/**
+ *
+ * @author atalay
+ */
+public class Algoritmaanaliz {
+
+    /**
+     * @param args the command line arguments
+     */
+    
+    public static void main(String[] args) {
+
+	int N=1000,no=154;
+	
+        
+        int myArray[]= new int[N];
+            
+        for (int i=0; i<N;i++){
+            myArray[i] = i;
+        }   
+        
+        long startTime = System.nanoTime();
+        for (int i=0; i<N;i++){
+            searchInArray(myArray,no);
+        }
+
+        long stopTime = System.nanoTime();
+        System.out.println("Toplam Zaman:"+(stopTime - startTime)+" nanosaniye");
+             
+    }
+    
+    public static int searchInArray(int myArray[],int no){
+       
+        int enSonIndex= myArray.length;
+        int ilkIndex = 0;
+        int sayac=0,  kontrol=0;
+        
+        while (enSonIndex - ilkIndex >1)
+        {
+            int bak = (enSonIndex+ilkIndex)/2;
+            sayac+=1;
+            if (myArray[bak]== no){
+                kontrol = 1;
+                break;
+
+            }else if (myArray[bak]<no) {
+                ilkIndex = bak;
+
+            }else {
+                enSonIndex = bak;
+            }
+            kontrol=0;
+        }
+        if (kontrol == 0){
+                return -1;
+        } 
+                
+        return 1;
+    }
+}
