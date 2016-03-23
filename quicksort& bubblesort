@@ -1,0 +1,86 @@
+ #include<stdio.h>
+#include <time.h> //<time.h>
+#include <conio.h>
+#include <windows.h>
+time_t dur;
+void quicksort(int [10],int,int);
+
+int main(){
+  int x[10000],size,i;
+
+  printf("Dizi Boyutu Giriniz ");
+  scanf("%d",&size);
+
+  printf("%d eleman gir: ",size);
+  for(i=0;i<size;i++)
+    x[i]=rand()%1000;
+
+
+time_t say;
+say=time(NULL);
+  quicksort(x,0,size-1);
+
+
+
+printf("\n Geçen süre >> %d saniye \n",(say-dur));
+
+//bubble_sort(x, size);
+
+
+  //printf("Sorted elements: ");
+  //for(i=0;i<size;i++)
+    //printf(" %d",x[i]);
+
+  return 0;
+}
+void bubble_sort(long list[], long n)
+{
+  long c, d, t;
+
+  for (c = 0 ; c < ( n - 1 ); c++)
+  {
+    for (d = 0 ; d < n - c - 1; d++)
+    {
+      if (list[d] > list[d+1])
+      {
+        /* Swapping */
+
+        t         = list[d];
+        list[d]   = list[d+1];
+        list[d+1] = t;
+      }
+    }
+  }
+}
+void quicksort(int x[10],int first,int last){
+
+    int pivot,j,temp,i;
+     if(first<last){
+         pivot=first;
+         i=first;
+         j=last;
+
+         while(i<j){
+             while(x[i]<=x[pivot]&&i<last)
+                 i++;
+             while(x[j]>x[pivot])
+                 j--;
+             if(i<j){
+                 temp=x[i];
+                  x[i]=x[j];
+                  x[j]=temp;
+             }
+
+         }
+
+         temp=x[pivot];
+         x[pivot]=x[j];
+         x[j]=temp;
+         quicksort(x,first,j-1);
+         quicksort(x,j+1,last);
+
+
+    }
+
+}
+
