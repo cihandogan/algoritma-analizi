@@ -1,0 +1,52 @@
+#include <iostream>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+using namespace std;
+class dynamicArray{
+public:
+	dynamicArray(int intSize = 0)
+: theSize(intSize),theCapacity(intSize + 10 ),s(0)
+{
+sayilar = new int[theCapacity];
+}
+int size(){return theCapacity;}
+void add(int x){
+	if(s==size())resize();
+sayilar[s]=x;
+s++;
+
+}
+int resize(){
+	cout<<"---------------------"<<endl;
+	cout<<"Yer degisimi yapiliyor"<<endl;
+	cout<<"---------------------"<<endl;
+	int s=theSize;
+int *eskisayilar=sayilar;
+sayilar= new int [theCapacity*2];
+for(int k=0;k<s;k++){
+	sayilar[k]=eskisayilar[k];
+	theSize=s;
+	theCapacity=theCapacity*2;
+}
+}
+
+
+
+
+private :
+	int theSize;
+	int s;
+	int theCapacity;
+	int * sayilar;
+	
+};
+
+int main(int argc, char** argv) {
+	dynamicArray myD=dynamicArray(1);
+
+	for(int k=0;k<100;k++)
+	myD.add(4);
+		cout<<myD.size()<<endl;
+	
+	return 0;
+}
