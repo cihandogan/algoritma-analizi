@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hashtable dizi1 = new Hashtable(); // hash olusturma
+
+            /* Add() metodu ile koleksiyona veri giriyoruz */
+
+            dizi1.Add(0, 100);
+            dizi1.Add(1, 101);
+            dizi1.Add(2, 102);
+            dizi1.Add(3, 103);
+            dizi1.Add(4, 104);
+            dizi1.Add(5, 105);
+
+            ICollection anahtar = dizi1.Keys;
+
+            foreach (var item in anahtar) //yazdırma
+            {
+
+                Console.WriteLine(item + " = " + dizi1[item]);
+
+            }
+
+          
+
+
+            Console.WriteLine("Bulmak istediğiz sayiyi giriniz:");
+            int deger = Convert.ToInt32(Console.ReadLine());
+           
+                
+            for(int i=0;i<dizi1.Count;i++)
+            {
+                if (Convert.ToInt32(dizi1[i]) == deger)
+                {
+
+                    Console.WriteLine(i + ".indexte" + deger + "bulundu");
+                    break;
+
+                }
+                else
+                    Console.WriteLine(i + ".indexte" + deger + "bulunamadı");
+
+            }
+            
+
+
+            Console.WriteLine("Silmek istediğiz sayiyi giriniz:");
+            int sayi = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < dizi1.Count; i++) // silme
+            {
+                if (Convert.ToInt32(dizi1[i]) == sayi)
+                {
+                    Console.WriteLine(i + ".indexte" + sayi + "bulundu ve silindi");
+                    dizi1.Remove(i);
+                    break;
+     
+                }
+
+                else
+                    Console.WriteLine(i + ".indexte" + sayi + "bulunamadı");
+
+               
+            }
+
+            Console.WriteLine("İslem sonundaki yeni dizi:\n");
+
+            foreach (var item in anahtar) //yazdırma
+            {
+
+                Console.WriteLine(item + " = " + dizi1[item]);
+
+            }
+
+            Console.ReadLine();
+
+             
+            
+            }
+        }
+    }
